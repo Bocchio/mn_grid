@@ -61,6 +61,13 @@
         var matrizVista = mat4.create();            
         var matrizModelado = mat4.create();  
         
+        var filas = 10;
+        var columnas = 10;
+        var superficie = "plano";
+        var radio = 1;
+        var amplitud = 0.1;
+        var longitud = 0.3;
+        var altura = 2;
         
 
         function initGL(canvas) {
@@ -242,7 +249,13 @@
             gui.add(window, "alturaCamara",-4,4).step(0.01);;
             gui.add(window, "modo",["wireframe","smooth","edges"]);
             gui.add(window, "velocidadAngular",0, 1).step(0.01);
-            
+            gui.add(window, "filas", 1, 50).step(1).onChange(crearGeometria);
+            gui.add(window, "columnas", 1, 50).step(1).onChange(crearGeometria);
+            gui.add(window, "superficie", ["plano", "esfera", "tubo senoidal"]).onChange(crearGeometria);
+            gui.add(window, "radio", 0.1, 2.5, 0.01).onChange(crearGeometria);
+            gui.add(window, "amplitud", 0.01, 0.5, 0.01).onChange(crearGeometria);
+            gui.add(window, "longitud", 0.1, 1, 0.01).onChange(crearGeometria);
+            gui.add(window, "altura", 0.1, 2.5, 0.01).onChange(crearGeometria);
             
         }
 
